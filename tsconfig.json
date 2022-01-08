@@ -23,7 +23,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "lib/createBlankYear.js"
+    "lib/createBlankYear.js",
+    "components/YearlyChart.js"
   ],
   "exclude": [
     "node_modules"
