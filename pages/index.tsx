@@ -3,11 +3,12 @@ import YearlyChart from '../components/YearlyChart'
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-slate-500">
       <Head>
         <title>Mood Tracker</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
