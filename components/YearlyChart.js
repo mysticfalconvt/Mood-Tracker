@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import EditDayModal from "./EditDayModal";
 import { randomizeYearDayValues } from "../lib/createBlankYear";
 
-function DisplayMonths({ months }) {
+function DisplayMonths({ months, year }) {
     // displays each month in a row
     const currentMonth = new Date().getMonth();
     return (
@@ -17,7 +17,7 @@ function DisplayMonths({ months }) {
                 return (
                     <div key={index} className="w-7 ">
                         <h1 className="rotate-90 mb-14 mt-2">{month.name}</h1>
-                        <DisplayDays days={month.days} isCurrentMonth={isCurrentMonth} />
+                        <DisplayDays days={month.days} isCurrentMonth={isCurrentMonth} currentMonth={month.name} year={year} />
                     </div>
                 )
             })}
@@ -25,7 +25,7 @@ function DisplayMonths({ months }) {
     )
 }
 
-function DisplayDays({ days, isCurrentMonth }) {
+function DisplayDays({ days, isCurrentMonth, currentMonth, year }) {
     const currentDay = new Date().getDate();
 
     // displays each day in a row
@@ -36,15 +36,17 @@ function DisplayDays({ days, isCurrentMonth }) {
                 const [borderColor, setBorderColor] = useState("border-slate-500");
                 const [textColor, setTextColor] = useState("text-transparent");
                 useEffect(() => {
-                    if (day.value === 1) setColor("bg-red-400");
-                    if (day.value === 2) setColor("bg-orange-400");
-                    if (day.value === 3) setColor("bg-yellow-400");
-                    if (day.value === 4) setColor("bg-green-400");
-                    if (day.value === 5) setColor("bg-green-600");
+                    // console.log('useEffect');
+                    // console.log(day.value)
+                    if (day.value === "1") setColor("bg-red-400");
+                    if (day.value === "2") setColor("bg-orange-400");
+                    if (day.value === "3") setColor("bg-yellow-400");
+                    if (day.value === "4") setColor("bg-green-400");
+                    if (day.value === "5") setColor("bg-green-600");
                     if (day.date === currentDay && isCurrentMonth) setBorderColor("border-rose-700");
                     if (isCurrentMonth) setTextColor("text-slate-700");
                     if (day.date === currentDay && isCurrentMonth) setTextColor("text-black");
-                }, [day.value, isCurrentMonth, currentDay]);
+                }, [day.value, isCurrentMonth, currentDay, year]);
                 const divClasses = `
                     border-2 
                     border-solid
@@ -61,7 +63,7 @@ function DisplayDays({ days, isCurrentMonth }) {
                 return (
                     <div key={index} className={divClasses}>
 
-                        <EditDayModal day={day} buttonClasses={dayClasses} />
+                        <EditDayModal month={currentMonth} day={day} buttonClasses={dayClasses} year={year} />
                     </div>
                 )
             })}
@@ -75,7 +77,7 @@ export default function YearlyChart() {
     const randomYear = randomizeYearDayValues();
     const [year, setYear] = useLocalStorageState("year", blankYear);
     useEffect(() => {
-        if (year === blankYear || year === undefined || true) {
+        if (year === blankYear || year === undefined) {
             console.log("blankYear");
             setYear(blankYear);
         }
@@ -87,7 +89,7 @@ export default function YearlyChart() {
         <div className="mt-2">
 
 
-            <DisplayMonths months={year.months} />
+            <DisplayMonths months={year.months} year={[year, setYear]} />
 
         </div>
 
