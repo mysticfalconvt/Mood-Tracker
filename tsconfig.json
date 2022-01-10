@@ -24,7 +24,8 @@
     "**/*.ts",
     "**/*.tsx",
     "lib/createBlankYear.js",
-    "components/YearlyChart.js"
+    "components/YearlyChart.js",
+    "pages/_app.js"
   ],
   "exclude": [
     "node_modules"

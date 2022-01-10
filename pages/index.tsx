@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import YearlyChart from '../components/YearlyChart'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
+  const { data: session, status } = useSession()
+  console.log(session)
+  console.log(status)
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-slate-500">
       <Head>
@@ -11,7 +15,7 @@ export default function Home() {
 
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
+        <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">
           Track your days.  Improve your Year.
         </h1>
         <section
@@ -30,7 +34,18 @@ export default function Home() {
         >
           Boskind.tech
         </a>
+        <button onClick={() => postUser({ name: "test", email: "another test" })}>new user</button>
       </footer>
     </div>
   )
+}
+
+function postUser(user) {
+  return fetch('/api/user', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
 }
