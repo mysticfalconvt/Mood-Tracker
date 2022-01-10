@@ -40,7 +40,7 @@ export default function Home() {
   )
 }
 
-function postUser(user) {
+function postUser(user: { name: string; email: string }) {
   return fetch('/api/user', {
     method: 'POST',
     headers: {
