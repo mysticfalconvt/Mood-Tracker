@@ -105,10 +105,10 @@ export default NextAuth({
         // async redirect({ url, baseUrl }) { return baseUrl },
         // async session({ session, token, user }) { return session },
         // async jwt({ token, user, account, profile, isNewUser }) { return token }
-        session: async (session, user) => {
-            console.log("session", session)
-            if (user) console.log("user", user)
-            // session.id = user.id
+        session: async ({ session, token }) => {
+            // console.log("session", session)
+            // if (user) console.log("user", user)
+            session.id = token.sub
             return Promise.resolve(session)
         }
     },

@@ -34,7 +34,7 @@ export default function Home() {
         >
           Boskind.tech
         </a>
-        <button onClick={() => postUser({ name: "test", email: "another test" })}>new user</button>
+
       </footer>
     </div>
   )
