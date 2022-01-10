@@ -36,13 +36,15 @@ export default function Home() {
         </a>
 
       </footer>
+      <button onClick={() => updateUser({ testInfo: 'test' })}>testing</button>
+      <button></button>
     </div>
   )
 }
 
-function postUser(user: { name: string; email: string }) {
+function updateUser(user: { testInfo: string }) {
   return fetch('/api/user', {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },

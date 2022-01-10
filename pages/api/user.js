@@ -2,8 +2,8 @@ const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 
 export default async function handler(req, res) {
-    console.log("YearData");
-    console.log(req);
+    // console.log("YearData");
+    // console.log(req);
 
     // switch the methods
     switch (req.method) {
@@ -81,6 +81,8 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
     //check if current user is this user then update the user otherwise return error
+    // console.log("body", req.body);
+    // console.log("session", req);
     return connectToDatabase('users')
         .then(({ client, db }) => {
             // get the id from the request
