@@ -36,17 +36,17 @@ export default function Home() {
         </a>
 
       </footer>
-      <button onClick={() => updateUser({ testInfo: 'test' })}>testing</button>
-      <button></button>
+      {/* <button onClick={() => updateUser({ testInfo: 'test' }, session)}>testing</button> */}
     </div>
   )
 }
 
-function updateUser(user: { testInfo: string }) {
+function updateUser(user: { testInfo: string }, session: any) {
   return fetch('/api/user', {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+
     },
     body: JSON.stringify(user)
   })

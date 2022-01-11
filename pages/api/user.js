@@ -1,10 +1,12 @@
 const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
+import { getSession } from "next-auth/react"
 
 export default async function handler(req, res) {
     // console.log("YearData");
     // console.log(req);
-
+    const session = await getSession({ req })
+    console.log(session);
     // switch the methods
     switch (req.method) {
         case 'GET': {
@@ -81,8 +83,8 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
     //check if current user is this user then update the user otherwise return error
-    // console.log("body", req.body);
-    // console.log("session", req);
+
+    // console.log(userID);
     return connectToDatabase('users')
         .then(({ client, db }) => {
             // get the id from the request
