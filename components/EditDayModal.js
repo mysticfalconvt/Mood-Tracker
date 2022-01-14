@@ -2,8 +2,8 @@ import { useState } from "react";
 
 //modal to edit a day's value 
 
-export default function EditDayModal({ year, day, month, buttonClasses }) {
-    const [currentYear, setYear] = year;
+export default function EditDayModal({ year, setYear, day, month, buttonClasses, editable = true }) {
+
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState(day.value);
     const [isLoading, setIsLoading] = useState(false);
@@ -12,11 +12,11 @@ export default function EditDayModal({ year, day, month, buttonClasses }) {
         setIsOpen(!isOpen);
     }
 
-
+    console.log(editable)
 
     const handleChange = (e) => {
         console.log(e.target.value)
-        let updatedYear = { ...currentYear };
+        let updatedYear = { ...year };
         const monthNumber = month.toLowerCase().indexOf("jan") === 0 ? 0 : month.toLowerCase().indexOf("feb") === 0 ? 1 : month.toLowerCase().indexOf("mar") === 0 ? 2 : month.toLowerCase().indexOf("apr") === 0 ? 3 : month.toLowerCase().indexOf("may") === 0 ? 4 : month.toLowerCase().indexOf("jun") === 0 ? 5 : month.toLowerCase().indexOf("jul") === 0 ? 6 : month.toLowerCase().indexOf("aug") === 0 ? 7 : month.toLowerCase().indexOf("sep") === 0 ? 8 : month.toLowerCase().indexOf("oct") === 0 ? 9 : month.toLowerCase().indexOf("nov") === 0 ? 10 : month.toLowerCase().indexOf("dec") === 0 ? 11 : 0;
         updatedYear.months[monthNumber].days[day.date - 1].value = e.target.value;
         setYear(updatedYear);
@@ -31,7 +31,7 @@ export default function EditDayModal({ year, day, month, buttonClasses }) {
                 {day.date}
             </button>
 
-            {isOpen && <div className="absolute inset-0 bg-slate-900 z-10 opacity-95">
+            {editable && isOpen && <div className="absolute inset-0 bg-slate-900 z-10 opacity-95">
                 <div className="absolute inset-3 rounded-xl bg-slate-700 z-20
                 md:inset-20 md:min-w-80">
                     <button type="button" onClick={toggleOpen} className="

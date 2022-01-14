@@ -3,7 +3,8 @@ const ObjectId = require('mongodb').ObjectId;
 
 export default async function handler(req, res) {
     console.log("YearData");
-    console.log(req);
+    const session = await getSession({ req })
+    console.log(session);
 
     // switch the methods
     switch (req.method) {
