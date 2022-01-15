@@ -10,7 +10,8 @@ export default function NewUserView(req, res) {
             <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">
                 Track your days.  Improve your Year.
             </h1>
-            <p className='text-xl m-2'>This is an application to track your moods over the course of the year.  Each day put in how your day went, and watch the year fill in.  </p>
+            <p className='text-xl m-2'>This is an application to track your moods over the course of the year.  Each day put in how your day went, and watch the year fill in.   </p>
+            <p className='text-xl m-2'>Look for trends and see what makes you tick.  Please Sign in above to get started!</p>
             <section
                 className='flex justify-start items-start '
             >

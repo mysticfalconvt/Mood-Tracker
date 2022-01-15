@@ -54,6 +54,8 @@ export function DisplayDays({ days, isCurrentMonth, currentMonth, year, setYear,
                     rounded-xl
                     ${color}
                     ${borderColor}
+                    opacity-75
+                    hover:opacity-100
                     `;
                 const dayClasses = `
                     text-center
@@ -73,12 +75,12 @@ export function DisplayDays({ days, isCurrentMonth, currentMonth, year, setYear,
 }
 
 export default function YearlyChart({ yearData }) {
-    console.log("YearlyChart");
+    // console.log("YearlyChart");
     const blankYear = createBlankYear();
     const [year, setYear] = useLocalStorageState("year", blankYear);
     useEffect(() => {
         if (year === blankYear || year === undefined) {
-            console.log("blankYear");
+            // console.log("blankYear");
             setYear(blankYear);
         }
         return () => {

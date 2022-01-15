@@ -12,10 +12,10 @@ export default function EditDayModal({ year, setYear, day, month, buttonClasses,
         setIsOpen(!isOpen);
     }
 
-    console.log(editable)
+    // console.log(editable)
 
     const handleChange = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         let updatedYear = { ...year };
         const monthNumber = month.toLowerCase().indexOf("jan") === 0 ? 0 : month.toLowerCase().indexOf("feb") === 0 ? 1 : month.toLowerCase().indexOf("mar") === 0 ? 2 : month.toLowerCase().indexOf("apr") === 0 ? 3 : month.toLowerCase().indexOf("may") === 0 ? 4 : month.toLowerCase().indexOf("jun") === 0 ? 5 : month.toLowerCase().indexOf("jul") === 0 ? 6 : month.toLowerCase().indexOf("aug") === 0 ? 7 : month.toLowerCase().indexOf("sep") === 0 ? 8 : month.toLowerCase().indexOf("oct") === 0 ? 9 : month.toLowerCase().indexOf("nov") === 0 ? 10 : month.toLowerCase().indexOf("dec") === 0 ? 11 : 0;
         updatedYear.months[monthNumber].days[day.date - 1].value = e.target.value;
