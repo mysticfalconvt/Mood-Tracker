@@ -3,7 +3,7 @@ import { signIn, signOut } from "next-auth/react"
 
 export default function UserAuth() {
     const { data: session, status } = useSession();
-    console.log(session);
+    // console.log(session);
     if (!session) {
         return (
             <div className='bg-slate-800 flex justify-around text-blue-100 p-2'>
